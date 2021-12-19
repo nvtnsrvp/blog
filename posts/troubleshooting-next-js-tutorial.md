@@ -1,9 +1,14 @@
 ---
-title: "Solving 'The _write() method is not implemented'"
-excerpt: "Error [ERR_METHOD_NOT_IMPLEMENTED]: The _write() method is not implemented."
+title: "Troubleshooting Next Js Tutorial'"
+excerpt: "Troubleshooting errors found during Nextjs tutorial follow along."
 date: "2021-11-22"
 tags: "software"
 ---
+
+
+* Solving 'The _write() method is not implemented'
+
+Error [ERR_METHOD_NOT_IMPLEMENTED]: The _write() method is not implemented."
 
 ```
 npm audit
@@ -112,3 +117,29 @@ Error: Export encountered errors on following paths:
 After upgrading next, upgrade your node: `brew upgrade node`.
 
 https://github.com/vercel/next.js/issues/30424.
+
+
+* `markdownToHtml`: `remark` import error
+
+pages/posts/[slug].js
+
+`TypeError: (0 , remark__WEBPACK_IMPORTED_MODULE_0__.default) is not a function`
+This error happened while generating the page. Any console logs will be displayed in the terminal window.
+
+```
+  4 | export default async function markdownToHtml(markdown) {
+> 5 |   const result = await remark().use(html).process(markdown)
+    |                             ^
+  6 |   return result.toString()
+  7 | }
+```
+
+```
+import remark from 'remark'
+import html from 'remark-html'
+```
+
+```
+import { remark } from 'remark'
+import html from 'remark-html'
+```
